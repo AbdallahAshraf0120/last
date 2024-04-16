@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\TimeCardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',[TimeCardController::class,'getTimeCard']);
+// Route::get('showTimeCard',[ApiController::class,'getTimeCard']);
+// Route::get('employee',[ApiController::class,'employee']);
 
+Route::get('/', function(){
+    return view('mainpage');
+});
+
+
+Route::get('showTimeCard',[ApiController::class,'showTimeCardData']);
+Route::get('employee',[ApiController::class,'showEmplyeeData']);
+Route::get('showTimeMachine',[ApiController::class,'showTimeMchine']);
+
+Route::post('/RunGetgetTimeCard', [ApiController::class, 'RunGetgetTimeCard'])->name('RunGetgetTimeCard');
+Route::post('/RunGetEmployee', [ApiController::class, 'RunGetEmployee'])->name('RunGetEmployee');
+Route::post('/RunGetTimemeMachine', [ApiController::class, 'RunGetTimemeMachine'])->name('RunGetTimemeMachine');

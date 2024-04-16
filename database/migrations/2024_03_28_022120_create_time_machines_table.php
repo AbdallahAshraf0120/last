@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('time_machines', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('timeRecordId');
+            $table->bigInteger('timeRecordGroupId');
+            $table->timestamp('startTime');
+            $table->timestamp('stopTime');
+            $table->bigInteger('personId');
             $table->timestamps();
         });
     }

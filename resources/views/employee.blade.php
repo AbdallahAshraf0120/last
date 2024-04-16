@@ -1,6 +1,5 @@
 @include('mainpage')
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,27 +13,25 @@
 
 <body>
     <div class="container mt-4">
-        <h2>Time Card</h2>
+        <h2>employee</h2>
         <table class="table" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">timeRecordGroupId</th>
-                    <th scope="col">startTime</th>
-                    <th scope="col">stopTime</th>
-                    <th scope="col">startDate</th>
-                    <th scope="col">stopDate</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">NationalId</th>
+                    <th scope="col">WorkEmail</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data as $item)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $item->timeRecordGroupId }}</td>
-                        <td>{{ $item->startTime }}</td>
-                        <td>{{ $item->stopTime }}</td>
-                        <td>{{ $item->startDate }}</td>
-                        <td>{{ $item->stopDate }}</td>
+                        <td>{{ $item->FirstName }}</td>
+                        <td>{{ $item->LastName }}</td>
+                        <td>{{ $item->NationalId }}</td>
+                        <td>{{ $item->WorkEmail }}</td>
 
                     </tr>
                 @endforeach

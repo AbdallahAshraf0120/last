@@ -82,10 +82,6 @@ public function showTimeCardData(){
     
 }
     
-
-
-
-    
 public function getemployee()
 {
     ini_set('max_execution_time', 3600); 
@@ -173,6 +169,46 @@ public function showTimeMchine(){
     
 }
 
+
+public function getAbsence()
+{
+    ini_set('max_execution_time', 3600);
+
+    $endpoint = '/hcmRestApi/resources/11.13.18.05/absences';
+    $limit = 500;
+    $offset = 0;
+
+    if (AbsenceRequest::count() == 0) {
+        do {
+            $query = [
+                'limit'=> $limit ,
+                'offset' => $offset
+            ];
+            $data = $this->getRequest($endpoint , $query);
+            foreach ($data->items as $item) {
+                AbsenceRequest::insertOrIgnore([
+                    'personId' => $item->personId,
+                    'absencePatternCd' => $item->absencePatternCd,
+                    'absenceStatusCd' => $item->absenceStatusCd,
+                    'absenceTypeId' => $item->absenceTypeId,
+                    'createdBy' => $item->createdBy,
+                    'creationDate' => $item->creationDate,
+                ]);
+            }
+            $offset += $limit;  
+        } while ($data->hasMore);
+    }
+}
+
+
+
+public function showAbsence(){
+    $Absence = AbsenceRequest::all();
+    return view('showAbsence', ['data' => $Absence]);
+
+    
+}
+
 public function RunGetgetTimeCard()
 {
     $this->getTimeCard();
@@ -194,6 +230,12 @@ public function RunGetTimemeMachine()
 }
 
 
+public function RunGetAbsence()
+{
+    $this->getAbsence(); 
+    return redirect()->back()->with('success', 'Absence integration process executed successfully.');
+    
+}
 
 
 }

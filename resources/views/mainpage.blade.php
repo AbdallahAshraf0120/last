@@ -28,6 +28,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ 'showTimeMachine' }}">TimeMachine</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ 'showAbsence' }}">Absence</a>
+                </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
@@ -53,6 +57,10 @@
     <form action="{{ route('RunGetTimemeMachine') }}" method="post">
         @csrf
         <button type="submit" class="btn btn-primary">Run TimeMachine</button>
+    </form>
+    <form action="{{ route('RunGetAbsence') }}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-primary">Run Absence</button>
     </form>
 </div>
 <style>

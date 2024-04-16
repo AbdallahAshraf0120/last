@@ -178,7 +178,7 @@ public function getAbsence()
     $limit = 500;
     $offset = 0;
 
-    if (AbsenceRequest::count() == 0) {
+    // if (AbsenceRequest::count() == 0) {
         do {
             $query = [
                 'limit'=> $limit ,
@@ -197,7 +197,7 @@ public function getAbsence()
             }
             $offset += $limit;  
         } while ($data->hasMore);
-    }
+    
 }
 
 
